@@ -1,0 +1,524 @@
+[
+  {
+    "zone_id": "Zone D",
+    "count": 122,
+    "centroid_lat": 29.436425669446354,
+    "centroid_lng": -98.52015419053357,
+    "sample_addresses": [
+      "2422 SPICEWOOD DR, SAN ANTONIO, TX 78213",
+      "2402 VALENCIA, SAN ANTONIO, TX 78237",
+      "4330 ROARK DR, SAN ANTONIO, TX 78219"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.436425669446354,-98.52015419053357"
+  },
+  {
+    "zone_id": "Zone C",
+    "count": 41,
+    "centroid_lat": 29.502384063195898,
+    "centroid_lng": -98.35619169080704,
+    "sample_addresses": [
+      "9802 COPPERWAY, CONVERSE, TX 78109",
+      "4130 TROPICAL DR, SAN ANTONIO, TX 78218",
+      "6823 EMERALD VALLEY, SAN ANTONIO, TX 78242"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.502384063195898,-98.35619169080704"
+  },
+  {
+    "zone_id": "Zone B",
+    "count": 36,
+    "centroid_lat": 29.51356479036777,
+    "centroid_lng": -98.6926053974461,
+    "sample_addresses": [
+      "8902 LAGUNA FALLS, SAN ANTONIO, TX 78251",
+      "12443 ALSTROEMERIA, SAN ANTONIO, TX 78253",
+      "14507 GOLD RUSH PASS, SAN ANTONIO, TX 78254"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.51356479036777,-98.6926053974461"
+  },
+  {
+    "zone_id": "Zone E",
+    "count": 26,
+    "centroid_lat": 29.56900647139211,
+    "centroid_lng": -98.40377935556192,
+    "sample_addresses": [
+      "10822 EDGECREST DR, SAN ANTONIO, TX 78217",
+      "13203 MONTE RIO, SAN ANTONIO, TX 78233",
+      "3535 OAKHORNE ST, SAN ANTONIO, TX 78247"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.56900647139211,-98.40377935556192"
+  },
+  {
+    "zone_id": "Zone F",
+    "count": 21,
+    "centroid_lat": 29.41473865877543,
+    "centroid_lng": -98.6817635856388,
+    "sample_addresses": [
+      "10342 OAKWOOD CREST, SAN ANTONIO, TX 78245",
+      "10222 FOSSIL VLY, SAN ANTONIO, TX 78245",
+      "3233 NW LOOP 410, SAN ANTONIO, TX 78213"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.41473865877543,-98.6817635856388"
+  },
+  {
+    "zone_id": "Zone J",
+    "count": 13,
+    "centroid_lat": 29.61202597352739,
+    "centroid_lng": -98.50832040758563,
+    "sample_addresses": [
+      "24219 GAZANIA BLF, SAN ANTONIO, TX 78260",
+      "1403 BARKMORE, SAN ANTONIO, TX 78258",
+      "14239 SAGE TRAIL, SAN ANTONIO, TX 78231"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.61202597352739,-98.50832040758563"
+  },
+  {
+    "zone_id": "Zone H",
+    "count": 12,
+    "centroid_lat": 29.35657477174117,
+    "centroid_lng": -98.61797836593576,
+    "sample_addresses": [
+      "8219 RADIANT STAR, SAN ANTONIO, TX 78252",
+      "8431 CREEK BEND, SAN ANTONIO, TX 78242",
+      "6806 COUGAR COVE, SAN ANTONIO, TX 78242"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.35657477174117,-98.61797836593576"
+  },
+  {
+    "zone_id": "Zone I",
+    "count": 8,
+    "centroid_lat": 29.38661761121375,
+    "centroid_lng": -98.37995225995624,
+    "sample_addresses": [
+      "5815 HEMATITE RIM, SAN ANTONIO, TX 78222",
+      "2426 TUCKER DR, SAN ANTONIO, TX 78222",
+      "6010 PLEASANT LAKE, SAN ANTONIO, TX 78222"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.38661761121375,-98.37995225995624"
+  },
+  {
+    "zone_id": "Zone R",
+    "count": 8,
+    "centroid_lat": 29.360901368995123,
+    "centroid_lng": -98.428225875278,
+    "sample_addresses": [
+      "315 JUNIPER ST, SAN ANTONIO, TX 78223",
+      "4210 GOLDEN SPICE DR, SAN ANTONIO, TX 78222",
+      "154 BANBRIDGE AVE, SAN ANTONIO, TX 78223"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.360901368995123,-98.428225875278"
+  },
+  {
+    "zone_id": "Zone U",
+    "count": 6,
+    "centroid_lat": 29.667783554287997,
+    "centroid_lng": -98.45602178777601,
+    "sample_addresses": [
+      "24210 MOUNTAIN BEND, SAN ANTONIO, TX 78258",
+      "23418 SEVEN WINDS, SAN ANTONIO, TX 78258",
+      "23418 SEVEN WINDS, SAN ANTONIO, TX 78258"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.667783554287997,-98.45602178777601"
+  },
+  {
+    "zone_id": "Zone K",
+    "count": 5,
+    "centroid_lat": 29.180048275642,
+    "centroid_lng": -98.40517736601541,
+    "sample_addresses": [
+      "3907 ANAQUA DR, ELMENDORF, TX 78112",
+      "23139 WHITE HICKORY, ELMENDORF, TX 78112",
+      "4807 LOST HILLS DR, ELMENDORF, TX 78112"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.180048275642,-98.40517736601541"
+  },
+  {
+    "zone_id": "Zone M",
+    "count": 4,
+    "centroid_lat": 29.17492330260425,
+    "centroid_lng": -98.45068029981725,
+    "sample_addresses": [
+      "22819 MASON PASS, SAN ANTONIO, TX 78264",
+      "3191 WOODFIN DR, SAN ANTONIO, TX 78264",
+      "3191 WOODFIN DR, SAN ANTONIO, TX 78264"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.17492330260425,-98.45068029981725"
+  },
+  {
+    "zone_id": "Zone N",
+    "count": 4,
+    "centroid_lat": 29.560514912453,
+    "centroid_lng": -98.61865580163675,
+    "sample_addresses": [
+      "13115 WILLOWTHORN LN, SAN ANTONIO, TX 78249",
+      "6119 AMHERST BAY, SAN ANTONIO, TX 78249",
+      "11731 SPRING LIFE DR, SAN ANTONIO, TX 78249"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.560514912453,-98.61865580163675"
+  },
+  {
+    "zone_id": "Zone A",
+    "count": 3,
+    "centroid_lat": 29.415800284559666,
+    "centroid_lng": -98.61723811215633,
+    "sample_addresses": [
+      "711 S BROWNLEAF ST, SAN ANTONIO, TX 78227",
+      "6459 TAHOKA ST, SAN ANTONIO, TX 78227",
+      "6531 TAHOKA ST, SAN ANTONIO, TX 78227"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.415800284559666,-98.61723811215633"
+  },
+  {
+    "zone_id": "Zone L",
+    "count": 3,
+    "centroid_lat": 29.687926651818998,
+    "centroid_lng": -98.64384072524366,
+    "sample_addresses": [
+      "25859 GREEN TER, SAN ANTONIO, TX 78255",
+      "7659 MISSION LEDGE, BOERNE, TX 78015",
+      "7755 SAN MIRIENDA, BOERNE, TX 78015"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.687926651818998,-98.64384072524366"
+  },
+  {
+    "zone_id": "Zone P",
+    "count": 3,
+    "centroid_lat": 29.43122760519334,
+    "centroid_lng": -98.79914844223732,
+    "sample_addresses": [
+      "730 FIRENZE AVE, SAN ANTONIO, TX 78245",
+      "15111 PINTAIL, SAN ANTONIO, TX 78253",
+      "15210 REDBIRD MNR, SAN ANTONIO, TX 78253"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.43122760519334,-98.79914844223732"
+  },
+  {
+    "zone_id": "Zone Q",
+    "count": 3,
+    "centroid_lat": 29.587309438248,
+    "centroid_lng": -98.33136112408766,
+    "sample_addresses": [
+      "8122 ROSESPUR PARK, SCHERTZ, TX 78154",
+      "16410 KENTUCKY RIDGE, SCHERTZ, TX 78154",
+      "7906 BELMONT RDG, SCHERTZ, TX 78154"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.587309438248,-98.33136112408766"
+  },
+  {
+    "zone_id": "Zone T",
+    "count": 3,
+    "centroid_lat": 29.592778869222002,
+    "centroid_lng": -98.47947973161267,
+    "sample_addresses": [
+      "305 HILL COUNTRY LN, SAN ANTONIO, TX 78232",
+      "305 HILL COUNTRY LN, SAN ANTONIO, TX 78232",
+      "30 AMBER FRST, SAN ANTONIO, TX 78232"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.592778869222002,-98.47947973161267"
+  },
+  {
+    "zone_id": "Zone G",
+    "count": 2,
+    "centroid_lat": 29.375285959772,
+    "centroid_lng": -98.713617118186,
+    "sample_addresses": [
+      "11354 FIRE CYN, SAN ANTONIO, TX 78252",
+      "11103 COUNTRY CANYON, SAN ANTONIO, TX 78252"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.375285959772,-98.713617118186"
+  },
+  {
+    "zone_id": "Zone O",
+    "count": 2,
+    "centroid_lat": 29.4908794173675,
+    "centroid_lng": -98.45551865108601,
+    "sample_addresses": [
+      "102 RUELLE LN, SAN ANTONIO, TX 78209",
+      "124 HARMON DR, SAN ANTONIO, TX 78209"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.4908794173675,-98.45551865108601"
+  },
+  {
+    "zone_id": "Zone S",
+    "count": 2,
+    "centroid_lat": 29.276855489353,
+    "centroid_lng": -98.339114291503,
+    "sample_addresses": [
+      "14411 ROCKHOUSE RD, ELMENDORF, TX 78112",
+      "7714 BIT CIR, ELMENDORF, TX 78112"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.276855489353,-98.339114291503"
+  },
+  {
+    "zone_id": "Zone V",
+    "count": 2,
+    "centroid_lat": 29.5240110276715,
+    "centroid_lng": -98.252859292252,
+    "sample_addresses": [
+      "11518 HANSONS FOREST, SCHERTZ, TX 78154",
+      "3116 PENCIL CHOLLA, SCHERTZ, TX 78154"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.5240110276715,-98.252859292252"
+  },
+  {
+    "zone_id": "Zone W",
+    "count": 2,
+    "centroid_lat": 29.6363415244805,
+    "centroid_lng": -98.4202224996195,
+    "sample_addresses": [
+      "3431 HEATHER BLF, SAN ANTONIO, TX 78259",
+      "20502 BLUE TRINITY, SAN ANTONIO, TX 78259"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.6363415244805,-98.4202224996195"
+  },
+  {
+    "zone_id": "Zone X",
+    "count": 2,
+    "centroid_lat": 29.326756749204,
+    "centroid_lng": -98.694346702131,
+    "sample_addresses": [
+      "10270 COMMERCE ST, ATASCOSA, TX 78002",
+      "10270 COMMERCE ST, ATASCOSA, TX 78002"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.326756749204,-98.694346702131"
+  },
+  {
+    "zone_id": "Zone Y",
+    "count": 1,
+    "centroid_lat": 29.589250377899,
+    "centroid_lng": -98.699645868767,
+    "sample_addresses": [
+      "10514 FAR REACHES LN, HELOTES, TX 78023"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.589250377899,-98.699645868767"
+  },
+  {
+    "zone_id": "Zone Z",
+    "count": 1,
+    "centroid_lat": 29.192144277834,
+    "centroid_lng": -98.540552609705,
+    "sample_addresses": [
+      "2010 SILVER MOUNTAIN, SAN ANTONIO, TX 78264"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.192144277834,-98.540552609705"
+  },
+  {
+    "zone_id": "Zone [",
+    "count": 1,
+    "centroid_lat": 29.705188791593,
+    "centroid_lng": -98.481153074069,
+    "sample_addresses": [
+      "822 COWHIDE DR, SAN ANTONIO, TX 78260"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.705188791593,-98.481153074069"
+  },
+  {
+    "zone_id": "Zone \\",
+    "count": 1,
+    "centroid_lat": 29.559218678021,
+    "centroid_lng": -98.483574975549,
+    "sample_addresses": [
+      "12828 SAN PEDRO AVE, SAN ANTONIO, TX 78216"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.559218678021,-98.483574975549"
+  },
+  {
+    "zone_id": "Zone ]",
+    "count": 1,
+    "centroid_lat": 29.360476769617,
+    "centroid_lng": -98.736384716384,
+    "sample_addresses": [
+      "12249 CASHTON, SAN ANTONIO, TX 78252"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.360476769617,-98.736384716384"
+  },
+  {
+    "zone_id": "Zone ^",
+    "count": 1,
+    "centroid_lat": 29.699440499215,
+    "centroid_lng": -98.442864084712,
+    "sample_addresses": [
+      "26952 RUSTIC BRK, SAN ANTONIO, TX 78261"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.699440499215,-98.442864084712"
+  },
+  {
+    "zone_id": "Zone _",
+    "count": 1,
+    "centroid_lat": 29.552019234553,
+    "centroid_lng": -98.315945817757,
+    "sample_addresses": [
+      "310 DE SOTO DR, UNIVERSAL CITY, TX 78148"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.552019234553,-98.315945817757"
+  },
+  {
+    "zone_id": "Zone `",
+    "count": 1,
+    "centroid_lat": 29.525480525854,
+    "centroid_lng": -98.300471127271,
+    "sample_addresses": [
+      "9710 FALCON BAY, CONVERSE, TX 78109"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.525480525854,-98.300471127271"
+  },
+  {
+    "zone_id": "Zone a",
+    "count": 1,
+    "centroid_lat": 29.316612298706,
+    "centroid_lng": -98.469378977036,
+    "sample_addresses": [
+      "10046 RUIDOSA, SAN ANTONIO, TX 78214"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.316612298706,-98.469378977036"
+  },
+  {
+    "zone_id": "Zone b",
+    "count": 1,
+    "centroid_lat": 29.233315565824,
+    "centroid_lng": -98.456684088192,
+    "sample_addresses": [
+      "19230 FM 1937, SAN ANTONIO, TX 78221"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.233315565824,-98.456684088192"
+  },
+  {
+    "zone_id": "Zone c",
+    "count": 1,
+    "centroid_lat": 29.710889373875,
+    "centroid_lng": -98.50692097709,
+    "sample_addresses": [
+      "730 SAN ANZA, SAN ANTONIO, TX 78260"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.710889373875,-98.50692097709"
+  },
+  {
+    "zone_id": "Zone d",
+    "count": 1,
+    "centroid_lat": 29.183488146116,
+    "centroid_lng": -98.606057734754,
+    "sample_addresses": [
+      "22915 SAVANNAH HTS, VON ORMY, TX 78073"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.183488146116,-98.606057734754"
+  },
+  {
+    "zone_id": "Zone e",
+    "count": 1,
+    "centroid_lat": 29.413455244537,
+    "centroid_lng": -98.764361720677,
+    "sample_addresses": [
+      "13715 SUNNYDALE PASS, SAN ANTONIO, TX 78245"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.413455244537,-98.764361720677"
+  },
+  {
+    "zone_id": "Zone f",
+    "count": 1,
+    "centroid_lat": 29.638547867603,
+    "centroid_lng": -98.384047433206,
+    "sample_addresses": [
+      "21236 BOULDER FLATS, SAN ANTONIO, TX 78266"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.638547867603,-98.384047433206"
+  },
+  {
+    "zone_id": "Zone g",
+    "count": 1,
+    "centroid_lat": 29.709831235698,
+    "centroid_lng": -98.414520906421,
+    "sample_addresses": [
+      "27715 RIATA RANCH DR, SAN ANTONIO, TX 78261"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.709831235698,-98.414520906421"
+  },
+  {
+    "zone_id": "Zone h",
+    "count": 1,
+    "centroid_lat": 29.314833417617,
+    "centroid_lng": -98.384247220586,
+    "sample_addresses": [
+      "10422 GREEN LAKE DR, SAN ANTONIO, TX 78223"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.314833417617,-98.384247220586"
+  },
+  {
+    "zone_id": "Zone i",
+    "count": 1,
+    "centroid_lat": 29.288801505312,
+    "centroid_lng": -98.403988003236,
+    "sample_addresses": [
+      "4331 STETSON RUN, SAN ANTONIO, TX 78223"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.288801505312,-98.403988003236"
+  },
+  {
+    "zone_id": "Zone j",
+    "count": 1,
+    "centroid_lat": 29.240743657417,
+    "centroid_lng": -98.746747510544,
+    "sample_addresses": [
+      "18610 LUCKEY RD, ATASCOSA, TX 78002"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.240743657417,-98.746747510544"
+  },
+  {
+    "zone_id": "Zone k",
+    "count": 1,
+    "centroid_lat": 29.56219265964,
+    "centroid_lng": -98.668030303816,
+    "sample_addresses": [
+      "9318 GRAND CEDAR, HELOTES, TX 78023"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.56219265964,-98.668030303816"
+  },
+  {
+    "zone_id": "Zone l",
+    "count": 1,
+    "centroid_lat": 29.592252034026,
+    "centroid_lng": -98.557361118143,
+    "sample_addresses": [
+      "124 WAGON TRAIL RD, SAN ANTONIO, TX 78231"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.592252034026,-98.557361118143"
+  },
+  {
+    "zone_id": "Zone m",
+    "count": 1,
+    "centroid_lat": 29.249136297334,
+    "centroid_lng": -98.340417313167,
+    "sample_addresses": [
+      "17503 JUAN CANTU DR, ELMENDORF, TX 78112"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.249136297334,-98.340417313167"
+  },
+  {
+    "zone_id": "Zone n",
+    "count": 1,
+    "centroid_lat": 29.311943349505,
+    "centroid_lng": -98.435265122667,
+    "sample_addresses": [
+      "10511 WELDER OAK, SAN ANTONIO, TX 78223"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.311943349505,-98.435265122667"
+  },
+  {
+    "zone_id": "Zone o",
+    "count": 1,
+    "centroid_lat": 29.466612671402,
+    "centroid_lng": -98.463092149876,
+    "sample_addresses": [
+      "118 DAVIS CT, SAN ANTONIO, TX 78209"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.466612671402,-98.463092149876"
+  },
+  {
+    "zone_id": "Zone p",
+    "count": 1,
+    "centroid_lat": 29.223815259035,
+    "centroid_lng": -98.664290313451,
+    "sample_addresses": [
+      "8475 JOHNSON, SOMERSET, TX 78069"
+    ],
+    "google_maps_link": "https://www.google.com/maps/search/?api=1&query=29.223815259035,-98.664290313451"
+  }
+]

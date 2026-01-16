@@ -1,0 +1,25 @@
+{
+  "name": "bexar-county-scraper",
+  "version": "1.0.0",
+  "description": "Bexar County document scraper with geocoding and zoning",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test:scraper": "ts-node src/tests/test-scraper.ts",
+    "test:extractor": "ts-node src/tests/test-extractor.ts",
+    "test:e2e": "ts-node src/tests/test-e2e.ts"
+  },
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "ml-hclust": "^3.1.0",
+    "puppeteer": "^21.7.0",
+    "tesseract.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

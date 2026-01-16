@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bexar County Foreclosures - Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>🏠 Bexar County Foreclosures</h1>
+            <p class="subtitle">January 2026 • 416 Properties • 48 Zones</p>
+        </div>
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-value" id="totalDocs">416</span>
+                <span class="stat-label">Documents</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="geocodedCount">357</span>
+                <span class="stat-label">Geocoded</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="zoneCount">48</span>
+                <span class="stat-label">Zones</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="panel map-panel">
+            <div class="panel-header">
+                <h2>📍 Property Map</h2>
+                <div class="map-controls">
+                    <select id="zoneFilter">
+                        <option value="">All Zones</option>
+                    </select>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+
+        <div class="panel zones-panel">
+            <div class="panel-header">
+                <h2>🗺️ Zone Summary</h2>
+            </div>
+            <div class="zones-list" id="zonesList"></div>
+        </div>
+
+        <div class="panel table-panel">
+            <div class="panel-header">
+                <h2>📄 Document Records</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search addresses, cities, ZIP codes...">
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="documentsTable">
+                    <thead>
+                        <tr>
+                            <th>Doc ID</th>
+                            <th>Sale Date</th>
+                            <th>Borrower</th>
+                            <th>Lender</th>
+                            <th>Loan Amount</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>ZIP</th>
+                            <th>Zone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
