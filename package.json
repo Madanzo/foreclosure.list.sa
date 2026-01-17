@@ -12,9 +12,13 @@
     "test:e2e": "ts-node src/tests/test-e2e.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.13.2",
+    "csv-parse": "^6.1.0",
     "csv-writer": "^1.6.0",
     "ml-hclust": "^3.1.0",
     "puppeteer": "^21.7.0",
+    "sharp": "^0.34.5",
     "tesseract.js": "^7.0.0"
   },
   "devDependencies": {

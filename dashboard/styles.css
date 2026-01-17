@@ -256,6 +256,35 @@ tr:hover {
     background: var(--bg-card-hover);
 }
 
+/* Filter Row */
+.filter-row {
+    background: var(--bg-card);
+}
+
+.filter-row td {
+    padding: 0.4rem 0.5rem;
+}
+
+.filter-input {
+    width: 100%;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.filter-input::placeholder {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+}
+
 .zone-badge {
     display: inline-block;
     padding: 0.2rem 0.5rem;

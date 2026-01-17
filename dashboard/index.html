@@ -73,6 +73,24 @@
                             <th>Zone</th>
                             <th>Actions</th>
                         </tr>
+                        <tr class="filter-row">
+                            <td><input type="text" id="filterDocId" placeholder="Filter..." class="filter-input"></td>
+                            <td><input type="text" id="filterDate" placeholder="Filter..." class="filter-input"></td>
+                            <td><input type="text" id="filterBorrower" placeholder="Filter..." class="filter-input">
+                            </td>
+                            <td><input type="text" id="filterLender" placeholder="Filter..." class="filter-input"></td>
+                            <td><input type="text" id="filterAmount" placeholder="Min-Max" class="filter-input"></td>
+                            <td><input type="text" id="filterAddress" placeholder="Filter..." class="filter-input"></td>
+                            <td><input type="text" id="filterCity" placeholder="Filter..." class="filter-input"></td>
+                            <td><input type="text" id="filterZip" placeholder="Filter..." class="filter-input"></td>
+                            <td>
+                                <select id="filterZone" class="filter-input">
+                                    <option value="">All</option>
+                                </select>
+                            </td>
+                            <td><button id="clearFilters" class="btn btn-secondary"
+                                    style="font-size: 10px;">Clear</button></td>
+                        </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>

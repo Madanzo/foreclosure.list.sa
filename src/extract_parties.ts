@@ -80,16 +80,26 @@ function extractParties(text: string): ExtractionResult {
     let borrower = '';
 
     const borrowerPatterns = [
+        // NEW: Grantor(s) with parentheses - VERY IMPORTANT for Bexar docs
+        /Grantor\s*\(?s?\)?[:\s]+(.*?)(?:\s+Original\s+Mortgagee|\s+Property\s+Address|\s+and\s+|,\s*(?:an?|a)\s+)/i,
+        // NEW: County Texas patterns (very common in Bexar documents)
+        /County\s+Texas\s+with\s+(.*?)\s+(?:as\s+Grantor|An?\s+|and\s+)/i,
+        /records\s+of\s+BEXAR\s+County\s+Texas\s+with\s+(.*?)(?:\s+as\s+|,|\s+An?\s+)/i,
+        // NEW: NOTICE OF TRUSTEE'S SALE patterns
+        /property\s+owned\s+by\s+(.*?)(?:,|\.|\s+located)/i,
+        /NOTICE\s+OF\s+TRUSTEE.*?property.*?owned\s+by\s+(.*?)(?:,|\.)/i,
+        // NEW: Obligor pattern
+        /Obligor[:\s]+(.*?)(?:,|\s+and|\s+a\s+)/i,
+        // NEW: "Grantor/Borrower" variations
+        /Grantor\/Borrower[:\s]*(.*?)(?:,|\s+and|\s+a\s+)/i,
         // Specific Patterns first
         // "Obligation(s) Secured: ... executed by [Name] ... secures/securing"
-        // Allow period or colon after Secured
         /Obligations?\s+Secured[:.]?.*?\s+executed\s+by\s+(.*?)(?:,\s+securing|\s+securing|\s+secures|\s+and)/i,
         // "with [Name], grantor(s)"
         /with\s+(.*?),\s+grantors?/i,
         /Grantor:\s*(.*?)(?:,\s+(?:an?\s+|a\s+|as\s+)|\s+and|\s+a\s+)/i,
         /Borrower:\s*(.*?)(?:,\s+(?:an?\s+|a\s+|as\s+)|\s+and|\s+a\s+)/i,
         // Generic / Standard patterns
-        // "WHEREAS, on [Date YYYY], [Name] executed" - Look for 4 digits (year) to avoid capturing date parts
         /WHEREAS.*?\s+on\s+.*?\d{4},?\s+(.*?)(?:,\s+(?:an?\s+|a\s+|as\s+|executed)|,\s+Grantor|\s+as\s+Grantor)/i,
         /WHEREAS.*?\s+on\s+.*?,?\s+(.*?)(?:,\s+(?:an?\s+|a\s+|as\s+|executed)|,\s+Grantor|\s+as\s+Grantor)/i,
         /executed\s+by\s+(.*?)(?:,\s+(?:an?\s+|a\s+|as\s+)|$)/i
@@ -119,6 +129,16 @@ function extractParties(text: string): ExtractionResult {
 
     let lender = '';
     const lenderPatterns = [
+        // NEW: Current Mortgagee patterns (very common)
+        /Current\s+Mortgagee:\s*(.*?)(?:\s+Mortgagee|\s+Address|\s+whose|$)/i,
+        /Current\s+Beneficiary[:\s]*(.*?)(?:\s+Recorded|\s+Address|\s+whose|$)/i,
+        // NEW: Mortgage Servicer patterns
+        /Mortgage\s+Servicer[:\s]*(.*?)(?:\s+is\s+|\s+whose|\s+at\s+)/i,
+        // NEW: Direct bank/trust name patterns
+        /([A-Z][A-Z\s.,&-]+(?:BANK|TRUST|MORTGAGE|LLC|INC|N\.?A\.?)[A-Z\s.,&-]*)\s+(?:is\s+the|as\s+)/i,
+        // NEW: "in favor of [Lender]"
+        /in\s+favor\s+of\s+(.*?)(?:,\s+its|\s+recorded|\s+and\s+)/i,
+
         /payable\s+to\s+the\s+order\s+of\s+(.*?)(?:,|\s+which)/i, // High priority
         // "Mortgagee: [Name]" - Stop at digits (address start) or 'and'/'a'
         /Mortgagee:\s*(.*?)(?:\s+\d|\s+and|\s+a\s+)/i,
@@ -130,10 +150,7 @@ function extractParties(text: string): ExtractionResult {
         /([A-Z\s.,&]+?)\s+,?\s*as\s+Beneficiary/i,
         // "... [Lender] is the current mortgagee"
         /([A-Z\s.,&]+?)\s+,?\s*whose\s+address\s+is.*?\s+is\s+the\s+current\s+mortgagee/i,
-        // Strict match for "is the current mortgagee" - Relaxed slightly for spacing/noise, kept case strict
-        // "THE BANK OF NEW YORK MELLON ... is the current mortgagee"
-        // Added '-' to character class for "2003-R4"
-        // Relaxed 'Mortgagee' to 'Mort' in case of OCR truncation
+        // Strict match for "is the current mortgagee"
         /([A-Z][A-Za-z0-9\s.,&-]+?)\s+(?:[Ii]s\s+[Tt]he\s+[Cc]urrent\s+[Mm]ort)/,
 
         // Robust "whose address" match for sloppy OCR
@@ -304,6 +321,22 @@ async function main() {
                     const waitTime = 4000 * attempts;
                     await new Promise(r => setTimeout(r, waitTime));
 
+                    // First, try to extract text directly from page (more reliable than OCR)
+                    let pageText = '';
+                    try {
+                        pageText = await page.evaluate(() => {
+                            // Get all text from the sidebar/summary panel
+                            const textNodes = document.querySelectorAll('body *');
+                            let allText = '';
+                            textNodes.forEach(node => {
+                                if (node.childNodes.length === 1 && node.childNodes[0].nodeType === 3) {
+                                    allText += ' ' + (node.textContent || '');
+                                }
+                            });
+                            return allText;
+                        });
+                    } catch (e) { }
+
                     const buffer = await page.screenshot({ fullPage: true });
 
                     // Save first screenshot for debug
@@ -313,7 +346,9 @@ async function main() {
                     }
 
                     const ret = await worker.recognize(buffer);
-                    let { borrower, lender, loan_amount } = extractParties(ret.data.text);
+                    // Combine page text (cleaner) with OCR text (backup)
+                    const combinedText = pageText + ' ' + ret.data.text;
+                    let { borrower, lender, loan_amount } = extractParties(combinedText);
 
                     // INLINED CLEANUP LOGIC TO ENSURE IT APPLIES ON RETRY
                     if (lender) {
@@ -322,13 +357,28 @@ async function main() {
                             lender = "Texas Veterans Land Board";
                         }
 
-                        lender = lender.replace(/^(?:AM|PM)\s+/, '') // Timestamp residuals
-                            .replace(/.*\bDeed\s+of\s+Trust\s+in\s+favor\s+of\s+/i, '') // "Deed of Trust in favor of..."
+                        lender = lender
+                            .replace(/^(?:AM|PM)\s+/, '') // Timestamp residuals
+                            .replace(/.*\bDeed\s+of\s+Trust\s+in\s+favor\s+of\s+/i, '')
                             .replace(/.*\bcertain\s+Deed\s+of\s+Trust\s+/i, '')
                             .replace(/,\s*as\s+.*$/, '') // Strip trailing "as nominal...", "as beneficiary"
-                            .replace(/as\s+nominee\s+for\s+/i, '') // "Mortgage ... as nominee for X" -> X? Actually usually we want the Nominee.
-                            // But if it says "MERS as nominee for Bank", usually Bank is the beneficial lender.
-                            // Let's keep it simple: just strip trailing "as..."
+                            .replace(/as\s+nominee\s+for\s+/i, '')
+                            // NEW: Remove mortgage servicer trailing info
+                            .replace(/\s+Mortgage\s+Servicer[:\s].*$/i, '')
+                            .replace(/\s+Mortgagee\s+Address[:\s].*$/i, '')
+                            // NEW: Remove "Information. The..." noise
+                            .replace(/^Information\.\s*/i, '')
+                            .replace(/\s+Information\.\s+.*$/i, '')
+                            // NEW: Remove street addresses at end
+                            .replace(/\s+\d+\s+\w+\s+(Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr)\s*.*$/i, '')
+                            // NEW: Remove copyright/branding
+                            .replace(/\s+©.*$/i, '')
+                            .replace(/\s+Bexar\s+County\s+Texas.*$/i, '')
+                            // NEW: Remove "Property" trailing
+                            .replace(/\s+Property\s*$/i, '')
+                            // NEW: Remove "it" at end (OCR artifact)
+                            .replace(/\s+it\s*$/i, '')
+                            .replace(/\s+i\s*$/i, '')
                             .trim();
                         const nomineeMatch = lender.match(/nominee\s+for\s+(.*?)(?:$|,)/i);
                         if (nomineeMatch) {

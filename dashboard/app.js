@@ -221,6 +221,109 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
     renderMarkers(filtered);
 });
 
+// Column Filters
+function applyColumnFilters() {
+    const filters = {
+        docId: document.getElementById('filterDocId').value.toLowerCase(),
+        date: document.getElementById('filterDate').value.toLowerCase(),
+        borrower: document.getElementById('filterBorrower').value.toLowerCase(),
+        lender: document.getElementById('filterLender').value.toLowerCase(),
+        amount: document.getElementById('filterAmount').value,
+        address: document.getElementById('filterAddress').value.toLowerCase(),
+        city: document.getElementById('filterCity').value.toLowerCase(),
+        zip: document.getElementById('filterZip').value.toLowerCase(),
+        zone: document.getElementById('filterZone').value
+    };
+
+    let filtered = documents.filter(doc => {
+        // Doc ID filter
+        if (filters.docId && !doc.doc_id.toLowerCase().includes(filters.docId)) return false;
+
+        // Date filter
+        const docDate = doc.sale_date || doc.instrument_date || '';
+        if (filters.date && !docDate.toLowerCase().includes(filters.date)) return false;
+
+        // Borrower filter
+        const borrower = doc.borrower_owner_name || '';
+        if (filters.borrower && !borrower.toLowerCase().includes(filters.borrower)) return false;
+
+        // Lender filter
+        const lender = doc.lender_name || '';
+        if (filters.lender && !lender.toLowerCase().includes(filters.lender)) return false;
+
+        // Amount filter (supports min-max range like "100000-200000")
+        if (filters.amount) {
+            const docAmount = parseFloat((doc.loan_amount || '0').replace(/[^0-9.]/g, ''));
+            if (filters.amount.includes('-')) {
+                const [min, max] = filters.amount.split('-').map(v => parseFloat(v) || 0);
+                if (docAmount < min || (max && docAmount > max)) return false;
+            } else {
+                const minAmount = parseFloat(filters.amount);
+                if (!isNaN(minAmount) && docAmount < minAmount) return false;
+            }
+        }
+
+        // Address filter
+        const address = doc.property_address || '';
+        if (filters.address && !address.toLowerCase().includes(filters.address)) return false;
+
+        // City filter
+        const city = doc.city || '';
+        if (filters.city && !city.toLowerCase().includes(filters.city)) return false;
+
+        // ZIP filter
+        const zip = doc.zip || '';
+        if (filters.zip && !zip.includes(filters.zip)) return false;
+
+        // Zone filter
+        if (filters.zone && doc.zone_id !== filters.zone) return false;
+
+        return true;
+    });
+
+    currentPage = 1;
+    renderTable(filtered);
+    renderMarkers(filtered);
+}
+
+// Add event listeners to all filter inputs
+function setupFilterListeners() {
+    const filterIds = ['filterDocId', 'filterDate', 'filterBorrower', 'filterLender',
+        'filterAmount', 'filterAddress', 'filterCity', 'filterZip', 'filterZone'];
+
+    filterIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', applyColumnFilters);
+            el.addEventListener('change', applyColumnFilters);
+        }
+    });
+
+    // Populate zone filter dropdown
+    const zoneSelect = document.getElementById('filterZone');
+    if (zoneSelect && zones.length) {
+        zones.forEach(zone => {
+            const option = document.createElement('option');
+            option.value = zone.zone_id;
+            option.textContent = zone.zone_id;
+            zoneSelect.appendChild(option);
+        });
+    }
+
+    // Clear filters button
+    document.getElementById('clearFilters')?.addEventListener('click', () => {
+        filterIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+        currentPage = 1;
+        renderTable();
+        renderMarkers();
+    });
+}
+
 // Initialize
 initMap();
-loadData();
+loadData().then(() => {
+    setupFilterListeners();
+});
