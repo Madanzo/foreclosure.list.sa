@@ -71,6 +71,7 @@
                             <th>City</th>
                             <th>ZIP</th>
                             <th>Zone</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         <tr class="filter-row">
@@ -86,6 +87,16 @@
                             <td>
                                 <select id="filterZone" class="filter-input">
                                     <option value="">All</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="filterStatus" class="filter-input">
+                                    <option value="">All</option>
+                                    <option value="Visited">Visited</option>
+                                    <option value="Super Good">Super Good</option>
+                                    <option value="Not Visited">Not Visited</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="No Good to Visit">No Good to Visit</option>
                                 </select>
                             </td>
                             <td><button id="clearFilters" class="btn btn-secondary"

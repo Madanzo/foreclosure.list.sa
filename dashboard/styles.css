@@ -430,3 +430,13 @@ tr:hover {
         gap: 0.5rem;
     }
 }
+
+/* Row highlight animation */
+@keyframes highlight-fade {
+    0% { background-color: rgba(255, 255, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+.highlight-row {
+    animation: highlight-fade 2s ease-out;
+}
