@@ -5,7 +5,8 @@ let currentDocs = [];
 let zones = [];
 let map;
 let markerMap = new Map();
-let statusMap = JSON.parse(localStorage.getItem('foreclosureStatusMap')) || {};
+let allMarkers = [];  // Track all markers for proper cleanup (handles duplicate doc_ids)
+let statusMap = {};
 let currentPage = 1;
 const pageSize = 25;
 
@@ -72,6 +73,22 @@ function initMap() {
 // Load data
 async function loadData() {
     try {
+        // Load status from API first, fallback to localStorage
+        try {
+            const statusResponse = await fetch('/api/status');
+            if (statusResponse.ok) {
+                const serverStatus = await statusResponse.json();
+                // Merge with localStorage (localStorage takes precedence for new items)
+                const localStatus = JSON.parse(localStorage.getItem('foreclosureStatusMap')) || {};
+                statusMap = { ...serverStatus, ...localStatus };
+                // Sync merged data back to server
+                await syncStatusToServer();
+            }
+        } catch (e) {
+            console.log('API not available, using localStorage only');
+            statusMap = JSON.parse(localStorage.getItem('foreclosureStatusMap')) || {};
+        }
+
         // Load documents
         const docsResponse = await fetch('data/documents.json');
         documents = await docsResponse.json();
@@ -92,6 +109,19 @@ async function loadData() {
         renderTable();
     } catch (error) {
         console.error('Error loading data:', error);
+    }
+}
+
+// Sync status to server
+async function syncStatusToServer() {
+    try {
+        await fetch('/api/status', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(statusMap)
+        });
+    } catch (e) {
+        console.log('Could not sync to server, saving to localStorage only');
     }
 }
 
@@ -142,8 +172,9 @@ function renderZones() {
 
 // Render map markers
 function renderMarkers(filteredDocs = null) {
-    // Clear existing markers
-    markerMap.forEach(m => map.removeLayer(m));
+    // Clear ALL existing markers (handles duplicate doc_ids)
+    allMarkers.forEach(m => map.removeLayer(m));
+    allMarkers = [];
     markerMap.clear();
 
     const docsToShow = filteredDocs || currentDocs;
@@ -171,14 +202,27 @@ function renderMarkers(filteredDocs = null) {
             });
 
             marker.addTo(map);
-            markerMap.set(doc.doc_id, marker);
+            allMarkers.push(marker);  // Track all markers for cleanup
+            // Only store first occurrence in markerMap (for highlighting)
+            if (!markerMap.has(doc.doc_id)) {
+                markerMap.set(doc.doc_id, marker);
+            }
         }
     });
 }
 
-// Filter by zone
+// Filter by zone (from sidebar)
 function filterByZone(zoneId) {
+    // Clear table header filters to avoid conflicts
+    const filterIds = ['filterDocId', 'filterDate', 'filterBorrower', 'filterLender',
+        'filterAmount', 'filterAddress', 'filterCity', 'filterZip', 'filterZone', 'filterStatus'];
+    filterIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+
     if (!zoneId) {
+        currentDocs = documents;
         renderMarkers();
         renderTable();
         return;
@@ -187,8 +231,13 @@ function filterByZone(zoneId) {
     const filtered = documents.filter(d => d.zone_id === zoneId);
     currentDocs = filtered;
     currentPage = 1;
-    renderMarkers(filtered);
-    renderTable(filtered);
+
+    // Sync table zone filter
+    const tableZone = document.getElementById('filterZone');
+    if (tableZone) tableZone.value = zoneId;
+
+    renderMarkers();
+    renderTable();
 }
 
 // Render data table
@@ -348,8 +397,15 @@ function applyColumnFilters() {
 
     currentDocs = filtered;
     currentPage = 1;
-    renderTable(filtered);
-    renderMarkers(filtered);
+    renderTable();
+    renderMarkers();
+
+    // Sync sidebar zone filter with table zone filter
+    const sidebarZone = document.getElementById('zoneFilter');
+    const tableZone = document.getElementById('filterZone');
+    if (sidebarZone && tableZone && sidebarZone.value !== tableZone.value) {
+        sidebarZone.value = tableZone.value || '';
+    }
 }
 
 // Map Highlighting
@@ -380,10 +436,13 @@ function unhighlightMarker(docId) {
     }
 }
 
-// Save status to localStorage
+// Save status to localStorage and server
 window.saveStatus = function (docId, status) {
     statusMap[docId] = status;
     localStorage.setItem('foreclosureStatusMap', JSON.stringify(statusMap));
+
+    // Sync to server
+    syncStatusToServer();
 
     // Update marker style immediately
     const marker = markerMap.get(docId);
