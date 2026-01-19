@@ -1,57 +1,64 @@
 # Bexar County Foreclosure Scraper
 
-An automated tool to scrape, analyze, and visualize foreclosure documents from Bexar County, Texas. It leverages AI (Google Gemini / Ollama) to extract detailed key content like Borrower, Lender, and Loan Amount from document images.
-
-## Features
-- **Scraper**: Puppeteer-based scraper to fetch document metadata and images.
-- **AI Extraction**: Hybrid extraction pipeline using:
-  - **Regex/OCR**: Tesseract.js for basic extraction.
-  - **Gemini Vision**: Google's Gemini 2.0 Flash Lite for high-accuracy parsing.
-  - **Local AI**: Support for Ollama (Moondream/LLaVA) for private, free extraction.
-- **Dashboard**: Interactive web dashboard to view, filter, and map foreclosure properties.
-- **Geocoding**: Automatic address geocoding for map visualization.
+Automated tool to scrape, analyze, and visualize foreclosure documents from Bexar County, Texas. Uses AI (Google Gemini / Ollama) to extract Borrower, Lender, and Loan Amount data.
 
 ## Quick Start
 
-### Prerequisites
-- Node.js (v18+)
-- Google Cloud API Key (for Gemini)
-- (Optional) Ollama installed for local AI
-
-### Installation
 ```bash
+# Install dependencies
 npm install
+
+# Set up environment
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
+
+# Run the dashboard
+npm run dashboard
+# Open http://localhost:8000
 ```
 
-### Usage
+## Features
+- **Automated Scraping**: Puppeteer-based scraper for Bexar County public records
+- **AI Extraction**: Hybrid pipeline using Cloud (Gemini) or Local (Ollama) AI
+- **Interactive Dashboard**: Filterable table + Leaflet map with zone clustering
+- **Status Tracking**: Persist property statuses across sessions
 
-1. **Scrape Data**
-   ```bash
-   npm run start
-   ```
+## Tech Stack
+| Category | Technology |
+|----------|-----------|
+| Backend | Node.js, TypeScript |
+| Scraping | Puppeteer |
+| AI | Google Gemini, Ollama |
+| Frontend | Vanilla JS, Leaflet |
+| Data | CSV, JSON |
 
-2. **Run AI Extraction**
-   ```bash
-   export GEMINI_API_KEY="your_key_here"
-   npx ts-node src/extract_gemini.ts
-   ```
+## Scripts
 
-3. **Update Dashboard Data**
-   ```bash
-   node dashboard/convert-data.js
-   ```
-
-4. **Launch Dashboard**
-   ```bash
-   npx http-server dashboard -p 3000
-   ```
-   Visit `http://localhost:3000`
+| Command | Description |
+|---------|-------------|
+| `npm run dashboard` | Start dashboard server (port 8000) |
+| `npm run dev` | Run main scraper |
+| `npm run build` | Compile TypeScript |
 
 ## Project Structure
-- `src/`: TypeScript source code for scraping and extraction.
-- `dashboard/`: Web frontend (HTML/JS/CSS).
-- `output/`: Raw data artifacts (CSV).
-- `dist/`: Compiled JavaScript.
+```
+├── src/                 # TypeScript source
+├── dashboard/           # Web frontend
+├── output/              # Data files (CSV)
+├── checkpoints/         # Project snapshots
+└── docs/                # Documentation
+```
+
+## Documentation
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - System design
+- [CHANGELOG.md](./CHANGELOG.md) - Version history
+- [DECISIONS.md](./DECISIONS.md) - Technical choices
+- [TODO.md](./TODO.md) - Backlog & ideas
+
+## Requirements
+- Node.js 18+
+- Google Gemini API key (for AI extraction)
+- Optional: Ollama for local AI
 
 ## License
-Proprietary / Private Use.
+Private / Proprietary

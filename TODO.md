@@ -1,12 +1,23 @@
-# Project To-Do List
+# Project TODO
 
-## Ongoing
-- [ ] Manual review of documents with "None" extraction result (~5%).
-- [ ] Refine local AI (Ollama/Moondream) performance on CPU or setup GPU environment.
-- [ ] Automated daily backup of `output/` directory.
+## In Progress
+- [ ] Manual review of "None" extraction results (~5%)
 
-## Future Features
-- [ ] Integration with Zillow/Redfin API to enrich property data.
-- [ ] Email alerts for new foreclosure listings in specific zones.
-- [ ] User authentication for the dashboard.
-- [ ] Mobile-responsive improvements for the table view.
+## Backlog
+- [ ] GPU setup for faster local AI inference
+- [ ] Address npm audit vulnerabilities (7 reported)
+- [ ] Add email alerts for new foreclosure listings
+- [ ] Mobile-responsive table improvements
+
+## Future Ideas
+- [ ] Zillow/Redfin API integration for property values
+- [ ] User authentication for dashboard
+- [ ] Historical data tracking and trends
+- [ ] PDF export of zone reports
+- [ ] Automated daily scraping with cron job
+
+## Completed
+- [x] Gemini AI extraction pipeline
+- [x] Dashboard column filters
+- [x] Status persistence (server.js)
+- [x] Project documentation layer
