@@ -5,7 +5,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8888; // Unique port to avoid conflicts
 const DASHBOARD_DIR = __dirname;
 const STATUS_FILE = path.join(DASHBOARD_DIR, 'data', 'status.json');
 
